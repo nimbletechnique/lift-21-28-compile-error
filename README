@@ -1,0 +1,62 @@
+This is a very simple exmaple of a Lift 2.1 web application that does not compile with Scala 2.8.
+
+=Project generation:
+
+mvn archetype:generate \
+ -DarchetypeGroupId=net.liftweb \
+ -DarchetypeArtifactId=lift-archetype-basic_2.8.0 \
+ -DarchetypeVersion=2.1-SNAPSHOT \
+ -DarchetypeRepository=http://scala-tools.org/repo-snapshots \
+ -DremoteRepositories=http://scala-tools.org/repo-snapshots \
+ -DgroupId=com.nimbletechnique \
+ -DartifactId=lift_21_test \
+ -Dversion=1.0
+
+=Environment:
+
+Mac OS X 10.6.4
+Java 1.6.0_20
+
+=Compile:
+
+mvn compile
+
+=Error:
+
+[INFO] Compiling 5 source files to /Users/collin/Code/scala_lift_compile_error/target/classes at 1285679809005
+[INFO] java.lang.reflect.InvocationTargetException
+[INFO] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[INFO] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+[INFO] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+[INFO] 	at java.lang.reflect.Method.invoke(Method.java:597)
+[INFO] 	at org_scala_tools_maven_executions.MainHelper.runMain(MainHelper.java:161)
+[INFO] 	at org_scala_tools_maven_executions.MainWithArgsInFile.main(MainWithArgsInFile.java:26)
+[ERROR] Caused by: java.lang.Error: ch.epfl.lamp.fjbg.JCode$OffsetTooBigException: offset too big to fit in 16 bits: 93143
+[INFO] 	at ch.epfl.lamp.fjbg.JFieldOrMethod.writeTo(JFieldOrMethod.java:114)
+[INFO] 	at ch.epfl.lamp.fjbg.JClass.writeTo(JClass.java:315)
+[INFO] 	at scala.tools.nsc.backend.jvm.GenJVM$BytecodeGenerator.emitClass(GenJVM.scala:141)
+[INFO] 	at scala.tools.nsc.backend.jvm.GenJVM$BytecodeGenerator.genClass(GenJVM.scala:262)
+[INFO] 	at scala.tools.nsc.backend.jvm.GenJVM$JvmPhase.apply(GenJVM.scala:56)
+[INFO] 	at scala.tools.nsc.backend.jvm.GenJVM$JvmPhase$$anonfun$run$3.apply(GenJVM.scala:52)
+[INFO] 	at scala.tools.nsc.backend.jvm.GenJVM$JvmPhase$$anonfun$run$3.apply(GenJVM.scala:52)
+[INFO] 	at scala.collection.mutable.HashMap$$anon$2$$anonfun$foreach$3.apply(HashMap.scala:89)
+[INFO] 	at scala.collection.mutable.HashMap$$anon$2$$anonfun$foreach$3.apply(HashMap.scala:89)
+[INFO] 	at scala.collection.Iterator$class.foreach(Iterator.scala:631)
+[INFO] 	at scala.collection.mutable.HashTable$$anon$1.foreach(HashTable.scala:161)
+[INFO] 	at scala.collection.mutable.HashTable$class.foreachEntry(HashTable.scala:194)
+[INFO] 	at scala.collection.mutable.HashMap.foreachEntry(HashMap.scala:39)
+[INFO] 	at scala.collection.mutable.HashMap$$anon$2.foreach(HashMap.scala:89)
+[INFO] 	at scala.tools.nsc.backend.jvm.GenJVM$JvmPhase.run(GenJVM.scala:52)
+[INFO] 	at scala.tools.nsc.Global$Run.compileSources(Global.scala:733)
+[INFO] 	at scala.tools.nsc.Global$Run.compile(Global.scala:813)
+[INFO] 	at scala.tools.nsc.Main$.process(Main.scala:108)
+[INFO] 	at scala.tools.nsc.Main$.main(Main.scala:122)
+[INFO] 	at scala.tools.nsc.Main.main(Main.scala)
+[INFO] 	... 6 more
+[INFO] Caused by: ch.epfl.lamp.fjbg.JCode$OffsetTooBigException: offset too big to fit in 16 bits: 93143
+[INFO] 	at ch.epfl.lamp.fjbg.JCode.checkOffset16(JCode.java:896)
+[INFO] 	at ch.epfl.lamp.fjbg.JCode.patchAllOffset(JCode.java:975)
+[INFO] 	at ch.epfl.lamp.fjbg.JCode.freeze(JCode.java:95)
+[INFO] 	at ch.epfl.lamp.fjbg.JMethod.freeze(JMethod.java:81)
+[INFO] 	at ch.epfl.lamp.fjbg.JFieldOrMethod.writeTo(JFieldOrMethod.java:111)
+[INFO] 	... 25 more
